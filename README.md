@@ -1,2 +1,2 @@
-# hellow-world
-# my first GH repo woo hoot
+# Repo for ITM 352 Fall 2019 Labs & Assignments
+This is where all my homework goes
