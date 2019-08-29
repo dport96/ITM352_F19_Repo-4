@@ -1,2 +1,2 @@
 # hellow-world
-#my first GH repo woo hoot
+# my first GH repo woo hoot
