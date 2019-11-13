@@ -1,0 +1,59 @@
+<script src="./products.js" type="text/javascript">
+var products = products.js;
+</script>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Exotic Shoppette</title>
+  <link rel="stylesheet" href="exoticStore.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway" rel="stylesheet">
+</head>
+
+<header>
+  <div>
+    <a class="title" href="products_display.html">Kobe's Exotic Pet Store</a>
+    <br>
+  </div>
+</header>
+
+<body>
+  <div class="wrapper">
+    <main>
+      <script>
+        // Generating variables for items --> Taken from Assignment 1 example
+        for (i = 0; i <= products.length; i++) {
+          document.write(` 
+              <section class="item">
+              <h2>${products[i]["exotic"]}</h2>
+              <p>${eval("price" + i)}</p>
+              <label id="quantity${i}_label"}">Quantity</label>
+              <input type="text" placeholder="0" name="quantity${i}" onkeyup="checkQuantityTextbox(this);"> 
+              <img class="img" src="${eval("image" + i)}">
+              </section>
+              
+              <h3>${products[1]["model"]} at \$${products[1]["price"]}</h3>
+            `);
+        }
+      </script>
+    </main>
+  </div>
+  <!--Taken from Lab 13 -->
+  <div id="buyForm">
+    <form name="quantity_form" action="http://localhost:8080/invoice_display.html" method="POST">
+      <input name="quantity_textbox" type="text" onkeyup="checkQuantityTextbox();">
+      <input name="purchase_submit" type="submit" value="Buy">
+    </form>
+  </div>
+</body>
+
+<footer>
+  <p>Copyright(C) 2019 Kobe Dait<p>
+</footer>
+
+</html>
