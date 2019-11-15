@@ -2,6 +2,7 @@
 
 header {
     background: teal;
+    width: auto;
     padding: 14px 16px;
     font-size: 2em;
 }
@@ -20,7 +21,7 @@ header .title {
 /* Highlights title */
 
 header .title:hover {
-    color: teal;
+    color: white;
 }
 
 /* Navigation Bar */
@@ -51,6 +52,8 @@ header .title:hover {
 
 #links a:hover {
     background-color: teal;
+    color: black;
+    text-emphasis: emphasis;
 }
 
 /* Table */
