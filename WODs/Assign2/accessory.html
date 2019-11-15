@@ -1,0 +1,103 @@
+<script>
+
+  var items = 5;
+
+  // Products 1
+  var exotic1 = "Hedgehog Tunnel";
+  var price1 = "$8.00";
+  var image1 = "./images/tunnel.jpg";
+
+  // Products 2
+  var exotic2 = "Cupcake Mineral Chew";
+  var price2 = "$2.79";
+  var image2 = "./images/chew.jpeg";
+
+  // Products 3
+  var exotic3 = "Pet Ball";
+  var price3 = "$5.73";
+  var image3 = "./images/ball.jpg";
+
+  // Products 4
+  var exotic4 = "Tank";
+  var price4 = "$23.10";
+  var image4 = "./images/tank.png";
+
+  // Products 5
+  var exotic5 = "Cricket Grub";
+  var price5 = "$2.99";
+  var image5 = "./images/crickets.jpeg";
+</script>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Exotic Shoppette</title>
+  <link rel="stylesheet" href="my.css">
+  <link rel="stylesheet" href="spin.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway" rel="stylesheet">
+</head>
+
+<header>
+  <div>
+    <a class="title" href="index.html">Exotic Shoppette</a>
+    <a class="slogan">EXOTIC PETS JUST A CLICK AWAY</a>
+    <br>
+  </div>
+</header>
+
+<body>
+  <div class="wrapper">
+    <ul class="navBar">
+      <li id="links"><a href="index.html">Home</a></li>
+      <li id="links"><a href="exotic.html">Exotics</a></li>
+      <li id="links"><a href="accessory.html">Accessories</a></li>
+      <li id="links"><a href="faq.html">FAQ</a></li>
+    </ul>
+    <br>
+    <div class="spin">
+      <button class="button" onclick="myStart()">Spin!</button>
+      <button class="button" onclick="myStop()">Stop!</button>
+      <main>
+        <script>
+          // Start Button
+          function myStart() {
+            var img = document.getElementsByClassName("img");
+            for (let i = 0; i < img.length; i++) {
+              img[i].classList.add("rotate-img");
+            }
+          }
+
+          // Stop Button
+          function myStop() {
+            var img = document.getElementsByClassName("img");
+            for (let i = 0; i < img.length; i++) {
+              img[i].classList.remove("rotate-img");
+            }
+          }
+
+          // Generating variables
+          for (i = 1; i <= items; i++) {
+            document.write(` 
+              <section class="item">
+              <h2>${eval("exotic" + i)}</h2>
+              <p>${eval("price" + i)}</p>
+              <img class="img" src="${eval("image" + i)}">
+              <p><a href=thanks_forAccessory.html>Buy!</a></p>
+              </section>
+            `);
+          }
+        </script>
+      </main>
+    </div>
+  </div>
+</body>
+
+<footer>
+  <p>Copyright(C) 2019 Kobe Dait<p>
+</footer>
+
+</html>

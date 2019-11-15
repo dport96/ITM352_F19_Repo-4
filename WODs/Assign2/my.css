@@ -1,0 +1,101 @@
+header {
+    background-color: white;
+    padding: 14px 16px;
+    font-size: 2em;
+}
+
+header .title {
+    font-family: 'Open Sans', Arial, sans-serif;
+    display: block;
+    float: left;
+    text-decoration: none;
+    color: black;
+    font-weight: bolder;
+}
+
+header .slogan {
+    font-family: 'Raleway', 'Arial Narrow Bold', sans-serif;
+    display: block;
+    float: right;
+    color: dimgray;
+}
+
+/* Highlights title */
+
+header .title:hover {
+    color: green;
+}
+
+/* Body styling */
+
+body {
+    position: relative;
+    font-family: 'Open Sans';
+    background-color: white;
+    margin: 0 20px 0 20px;
+}
+
+/* Block styling */
+
+body>div {
+    border: 5px solid black;
+    
+}
+
+.wrapper {
+    background: url(./images/rainforest.jpg) no-repeat 50% center;
+    min-height: 800px;
+}
+
+/* Navigation Bar */
+
+.navBar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: green;
+}
+
+/* Links on navBar */
+
+#links {
+    float: left;
+}
+
+#links a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Highlights links */
+
+#links a:hover {
+    background-color: black;
+}
+
+/* Table */
+
+.animals {
+    width: 100%;
+    border: 2px solid black;
+    background: white;
+    padding: 14px 16px;
+}
+
+th {
+    font-weight: bolder;
+}
+
+/* Alternates color for table rows */
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+footer p {
+    text-align: center;
+}
