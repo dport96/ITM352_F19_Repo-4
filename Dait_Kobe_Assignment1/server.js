@@ -35,9 +35,9 @@ function process_quantity_form(POST, response) {
         for (i in products) {
             let q = POST[`quantity${i}`];
             if (isNonNegInt(q) == true) {
-                response.redirect('invoice_display.html?' + qString);
+                response.redirect('invoice_display.html?' + qString); // Redirects to Invoice with query strings
             } else {
-                response.redirect('products_display.html?' + qString);
+                response.redirect('products_display.html?' + qString); // Redirects back to Products page
             }
         }
     }
