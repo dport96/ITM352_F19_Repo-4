@@ -80,7 +80,7 @@ tr:nth-child(even) {
 body {
     position: relative;
     font-family: 'Open Sans';
-    background-color: white;
+    background: url(./images/rainforest.jpg);
     margin: 0 20px 0 20px;
 }
 
@@ -146,6 +146,8 @@ input[type=submit]:hover {
 #invoice {
     border-collapse: collapse;
     border-color: black;
+    background-color: white;
+    padding: 12px;
 }
 #invoice th {
     padding: 12px 0;
