@@ -3,11 +3,16 @@
 <script src="./products.js" type="text/javascript"></script>
 
 <script>
-    var subtotal = 0;
-  
-    // Get the query string values from form submission
-    let params = (new URL(document.location)).searchParams;
-    quantity1 = params.get("quantity0");
+  var subtotal = 0;
+
+  // Get the query string values from form submission
+  let params = (new URL(document.location)).searchParams;
+  var quantity = ["", "", "", "", ""];
+
+  //Turns the query string values into var values
+  for (var i = 0; i < quantity.length; i++) {
+    quantity[i] = params.get("quantity" + i);
+  }
 </script>
 <html lang="en">
 
@@ -15,7 +20,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Exotic Shoppette</title>
+  <title>Kobe's Exotic Pet Store</title>
   <link rel="stylesheet" href="exoticStore.css">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway" rel="stylesheet">
 </head>
@@ -29,7 +34,7 @@
 
 <body>
   <div style="width: 600px; margin: auto;">
-    <table border="2">
+    <table id="invoice" border="2">
       <tbody>
         <tr>
           <th style="text-align: center;" width="43%">Item</th>
@@ -37,70 +42,20 @@
           <th style="text-align: center;" width="13%">Price</th>
           <th style="text-align: center;" width="54%">Extended Price</th>
         </tr>
+        <!-- Prints out the items on the invoice and calculates the totals -->
         <script>
-          // Product 1
-          var extended_prices = products[0]["price"] * quantity1;
-          var subtotal = extended_prices + subtotal;
-          document.write(`
+          for (var i = 0; i < products.length; i++) {
+            var extended_prices = products[i]["price"] * quantity[i];
+            var subtotal = extended_prices + subtotal;
+            document.write(`
                 <tr>
-                    <td width="43%">${products[0]["exotic"]}</td>
-                    <td align="center" width="11%">${quantity1}</td>
-                    <td width="13%">\$${products[0]["price"]}</td>
-                    <td width="54%">\$${extended_prices.toFixed(2)}</td>
+                    <td width="43%">${products[i]["exotic"]}</td>
+                    <td align="center" width="11%">${quantity[i]}</td>
+                    <td align="right" width="13%">\$${products[i]["price"]}</td>
+                    <td align="right" width="54%">\$${extended_prices.toFixed(2)}</td>
                 </tr>
                 `);
-        </script>
-        <script>
-          // Product 2
-          var extended_prices = products[1]["price"] * quantity2;
-          var subtotal = extended_prices + subtotal;
-          document.write(`
-                    <tr>
-                        <td width="43%">${products[1]["exotic"]}</td>
-                        <td align="center" width="11%">${q}</td>
-                        <td width="13%">\$${products[1]["price"]}</td>
-                        <td width="54%">\$${extended_prices}</td>
-                    </tr>
-                    `);
-        </script>
-        <script>
-          // Product 3
-          var extended_prices = products[2]["price"] * quantity3;
-          var subtotal = extended_prices + subtotal;
-          document.write(`
-                        <tr>
-                            <td width="43%">${products[2]["exotic"]}</td>
-                            <td align="center" width="11%">${q}</td>
-                            <td width="13%">\$${products[2]["price"]}</td>
-                            <td width="54%">\$${extended_prices}</td>
-                        </tr>
-                        `);
-        </script>
-        <script>
-          // Product 4
-          var extended_prices = products[3]["price"] * quantity4;
-          var subtotal = extended_prices + subtotal;
-          document.write(`
-                            <tr>
-                                <td width="43%">${products[3]["exotic"]}</td>
-                                <td align="center" width="11%">${q}</td>
-                                <td width="13%">\$${products[3]["price"]}</td>
-                                <td width="54%">\$${extended_prices}</td>
-                            </tr>
-                            `);
-        </script>
-        <script>
-          // Product 5
-          var extended_prices = products[4] * quantity5;
-          var subtotal = extended_prices + subtotal;
-          document.write(`
-                                <tr>
-                                    <td width="43%">${products[4]["exotic"]}</td>
-                                    <td align="center" width="11%">${quantity5}</td>
-                                    <td width="13%">\$${products[4]["price"]}</td>
-                                    <td width="54%">\$${extended_prices}</td>
-                                </tr>
-                                `);
+          }
         </script>
         <tr>
           <td colspan="4" width="100%">&nbsp;</td>
@@ -118,7 +73,7 @@
           document.write(`
                 <tr>
                     <td style="text-align: center;" colspan="3" width="67%">Sub-total</td>
-                    <td width="54%">\$${subtotal.toFixed(2)}</td>
+                    <td style="text-align: right;" style="align: right;" width="54%">\$${subtotal.toFixed(2)}</td>
                 </tr>
                 `);
         </script>
@@ -128,7 +83,7 @@
                 <tr>
                     <td style="text-align: center;" colspan="3" width="67%"><span style="font-family: arial;">Tax @
                         5.75%</span></td>
-                    <td width="54%">\$${tax.toFixed(2)}</td>
+                    <td style="text-align: right;" width="54%">\$${tax.toFixed(2)}</td>
                 </tr>
                 `);
         </script>
@@ -137,7 +92,7 @@
           document.write(`
                 <tr>
                     <td style="text-align: center;" colspan="3" width="67%"><strong>Total</strong></td>
-                    <td width="54%"><strong>\$${total.toFixed(2)}</strong></td>
+                    <td style="text-align: right;" width="54%"><strong>\$${total.toFixed(2)}</strong></td>
                 </tr>
                 `);
         </script>

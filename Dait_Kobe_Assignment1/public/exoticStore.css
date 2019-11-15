@@ -141,3 +141,14 @@ input[type=submit] {
 input[type=submit]:hover {
     background-color: darkcyan;
 }
+
+/* Invoice Styling */
+#invoice {
+    border-collapse: collapse;
+    border-color: black;
+}
+#invoice th {
+    padding: 12px 0;
+    background-color: darkcyan;
+    color: white;
+  }

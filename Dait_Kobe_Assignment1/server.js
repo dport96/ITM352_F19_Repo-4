@@ -31,20 +31,14 @@ function isNonNegInt(q, returnErrors = false) {
 function process_quantity_form(POST, response) {
     if (typeof POST['purchase_submit_button'] != 'undefined') {
         // Check if the quantities are valid, if so, send to the invoice, if not, give an error
-        isValidData = false;
+        var qString = queryString.stringify(POST);
         for (i in products) {
             let q = POST[`quantity${i}`];
-            if (isNonNegInt(q)) {
-
+            if (isNonNegInt(q) == true) {
+                response.redirect('invoice_display.html?' + qString);
             } else {
-
+                response.redirect('products_display.html?' + qString);
             }
-        }
-        var qString = queryString.stringify(POST);
-        if (isValidData == true) {
-            response.redirect('invoice_display.html?'+qString);
-        } else {
-            response.redirect('products_display.html?'+qString);
         }
     }
 }
