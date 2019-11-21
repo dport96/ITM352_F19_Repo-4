@@ -19,6 +19,7 @@ if (fs.existsSync(filename)) {
     console.log(filename + ' does not exist!');
 }
 
+// CHANGE to Login HTML
 app.get("/login", function (request, response) {
     // Give a simple login form
     str = `
@@ -33,6 +34,7 @@ app.get("/login", function (request, response) {
     response.send(str);
 });
 
+// CHANGE to Login HTML
 app.post("/login", function (request, response) {
     // Process login form POST and redirect to logged in page if ok, back to login page if not
     console.log(request.body);
@@ -40,9 +42,9 @@ app.post("/login", function (request, response) {
     the_username = request.body.username;
     if (typeof users_reg_data[the_username] != 'undefined') {
         if (users_reg_data[the_username].password == request.body.password) {
-            response.send(the_username + ' logged in!');
+            response.send(the_username + ' logged in!'); // REDIRECT to Invoice HTML
         } else {
-            response.redirect('/login');
+            response.redirect('/login'); //REDIRECT to Login HTML
         }
     }
 });
