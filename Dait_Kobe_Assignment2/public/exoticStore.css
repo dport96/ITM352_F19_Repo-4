@@ -1,0 +1,156 @@
+/* Header styling */
+
+header {
+    background: teal;
+    width: auto;
+    padding: 14px 16px;
+    font-size: 2em;
+}
+
+/* Title styling */
+
+header .title {
+    font-family: 'Open Sans', Arial, sans-serif;
+    display: block;
+    float: left;
+    text-decoration: none;
+    color: black;
+    font-weight: bolder;
+}
+
+/* Highlights title */
+
+header .title:hover {
+    color: white;
+}
+
+/* Navigation Bar */
+
+.navBar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: black;
+}
+
+/* Links on navBar */
+
+#links {
+    float: left;
+}
+
+#links a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Highlights links */
+
+#links a:hover {
+    background-color: teal;
+    color: black;
+    text-emphasis: emphasis;
+}
+
+/* Table */
+
+.animals {
+    width: 100%;
+    border: 2px solid black;
+    background: white;
+    padding: 14px 16px;
+}
+
+th {
+    font-weight: bolder;
+}
+
+/* Alternates color for table rows */
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Body styling */
+
+body {
+    position: relative;
+    font-family: 'Open Sans';
+    background: url(./images/rainforest.jpg);
+    margin: 0 20px 0 20px;
+}
+
+/* Main styling / Wraps items --> Taken from SmartPhoneProducts1*/
+
+main {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+/* Contains background in border */
+
+.wrapper {
+    background: url(./images/rainforest.jpg);
+    min-height: 800px;
+}
+
+/* Image styling */
+
+img {
+    width: 150px;
+    /* Set a small width */
+}
+
+/* Item styling */
+
+.item {
+    background-color: white;
+}
+
+/* Footer styling */
+
+footer p {
+    text-align: center;
+}
+
+/* Styling for Buy button --> CSS from w3schools*/
+
+input[type=submit] {
+    width: 50%;
+    background-color: teal;
+    color: black;
+    padding: 14px;
+    margin: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#buyButton {
+    text-align: center;
+    background-color: white;
+}
+
+/* Button Hover --> CSS from w3schools*/
+
+input[type=submit]:hover {
+    background-color: darkcyan;
+}
+
+/* Invoice Styling */
+#invoice {
+    border-collapse: collapse;
+    border-color: black;
+    background-color: white;
+    padding: 12px;
+}
+#invoice th {
+    padding: 12px 0;
+    background-color: darkcyan;
+    color: white;
+  }
