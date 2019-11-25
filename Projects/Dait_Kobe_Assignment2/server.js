@@ -6,7 +6,7 @@ var fs = require('fs');
 var data = require('./public/products.js');
 var products = data.products;
 var queryString = require("querystring");
-var user_data = 'user_data.json';
+var user_data = './public/user_data.json';
 
 var app = express(); //declaring express() as app
 app.all('*', function (request, response, next) {
