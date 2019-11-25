@@ -21,7 +21,7 @@ header .title {
 /* Highlights title */
 
 header .title:hover {
-    text-emphasis-color: ;
+    color: #3498db;
 }
 
 /* Navigation Bar */
@@ -134,11 +134,25 @@ input[type=submit] {
 
 #buyButton {
     text-align: center;
-    color: linear-gradient(120deg,#3498db,#8e44ad,#3498db);
+    color: linear-gradient(120deg, #3498db, #8e44ad, #3498db);
 }
 
 /* Button Hover --> CSS from w3schools*/
 
 input[type=submit]:hover {
     opacity: 0.5;
+}
+
+/* Invoice styling */
+
+#invoice {
+    width: 800px;
+    background: #f1f1f1;
+    height: 500px;
+    padding: 60px 40px;
+    border-radius: 10px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
