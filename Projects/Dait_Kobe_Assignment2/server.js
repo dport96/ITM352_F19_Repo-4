@@ -16,11 +16,11 @@ app.all('*', function (request, response, next) {
 
 app.use(myParser.urlencoded({ extended: true })); //Server-side processing
 app.use(express.static('./public'));
+app.post("/login_form", function (request, response) {
+    login_form(request.body, response);
+});
 app.post("/process_form", function (request, response) {
     process_quantity_form(request.body, response);
-});
-app.post("/login", function (request, response) {
-    login_form(request.body, response);
 });
 
 // Function used to check for valid quantities
@@ -33,9 +33,9 @@ function isNonNegInt(q, returnErrors = false) {
 }
 
 // Function to redirect to login page if true
-function process_quantity_form(POST, response) {
+function login_form(POST, response) {
     if (typeof POST['purchase_submit_button'] != 'undefined') {
-        // Check if the quantities are valid, if so, send to the invoice, if not, give an error
+        // Check if the quantities are valid, if so, send to the login, if not, give an error
         var qString = queryString.stringify(POST);
         for (i in products) {
             let q = POST[`quantity${i}`];
@@ -49,40 +49,20 @@ function process_quantity_form(POST, response) {
 }
 
 // Function to redirect to invoice page if true
-function login_form(POST, response) {
-    // Process login form POST and redirect to logged in page if ok, back to login page if not
-    console.log(request.body);
-    // Checks if username exists already USE FOR LOGIN CHECK
-    var qString = queryString.stringify(POST);
-    var the_username = request.body.username;
-    if (typeof reg_user_data[the_username] != 'undefined') {
-        if (reg_user_data[the_username].password == request.body.password) {
-            response.redirect('invoice_display.html?' + qString); // REDIRECT to Invoice HTML
-        } else {
-            response.redirect('login_display.html?' + qString); //REDIRECT to Login HTML
+function process_quantity_form(POST, response) {
+    if (typeof POST['login_submit_button'] != 'undefined') {
+        // Checks if username already exists
+        var qString = queryString.stringify(POST);
+        the_username = request.body.username;
+        if (typeof reg_user_data[the_username] != 'undefined') {
+            if (reg_user_data[the_username].password == request.body.password) {
+                response.redirect('invoice_display.html?' + qString); // REDIRECT to Invoice page
+            } else {
+                response.redirect('login_display.html'); //REDIRECT to Login page
+            }
         }
     }
 }
-
-// Checks if JSON string already exists
-if (fs.existsSync(user_data)) {
-    data = fs.readFileSync(user_data, 'utf-8');
-    stats = fs.statSync(user_data)
-
-    reg_user_data = JSON.parse(data); // Takes a string and converts it into object or array
-
-    username = 'newuser';
-    reg_user_data[username] = {};
-    reg_user_data[username].password = 'newpass';
-    reg_user_data[username].email = 'newuser@user.com';
-
-    fs.writeFileSync(user_data, JSON.stringify(reg_user_data));
-
-    console.log(reg_user_data);
-} else {
-    console.log(user_data + ' does not exist!');
-}
-
 
 
 app.listen(8080, () => console.log(`listening on port 8080`));
