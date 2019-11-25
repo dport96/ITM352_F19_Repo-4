@@ -75,7 +75,7 @@ app.post("/login", function (request, response) {
         if (reg_user_data[the_username].password == request.body.password) {
             response.redirect('./public/invoice_display.html'); // REDIRECT to Invoice HTML
         } else {
-            response.redirect('./public/login_display.html'); //REDIRECT to Login HTML
+            response.redirect('./public/login_display.html?' + qString); //REDIRECT to Login HTML
         }
     }
 });

@@ -1,65 +1,47 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login Page</title>
-    <link rel="stylesheet" href="login_design.css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway" rel="stylesheet">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="login_design.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
 </head>
 
-<header>
-    <div>
-        <a class="title" href="products_display.html">Kobe's Exotic Pet Store</a>
-        <br>
-    </div>
-</header>
-
 <body>
-    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+  <form action="invoice_display.html" class="login-form">
+    <h1>Login</h1>
 
-    <div id="id01" class="modal">
-
-        <form class="modal-content animate" action="/action_page.php" method="post">
-            <div class="imgcontainer">
-                <span onclick="document.getElementById('id01').style.display='none'" class="close"
-                    title="Close Modal">&times;</span>
-                <img src="img_avatar2.png" alt="Avatar" class="avatar">
-            </div>
-
-            <div class="container">
-                <label for="uname"><b>Username</b></label>
-                <input type="text" name="uname" placeholder="Enter Username" required>
-
-                <label for="psw"><b>Password</b></label>
-                <input type="password" name="psw" placeholder="Enter Password" required>
-
-                <button type="submit">Login</button>
-                <label>
-                    <input type="checkbox" name="remember" checked="checked"> Remember me
-                </label>
-            </div>
-
-            <div class="container" style="background-color: white">
-                <button type="button" onclick="document.getElementById('id01').style.display='none'"
-                    class="cancelbtn">Cancel</button>
-                <span class="psw">Forgot <a href="#">password?</a></span>
-            </div>
-        </form>
+    <div class="txtb">
+      <input type="text">
+      <span data-placeholder="Username"></span>
     </div>
 
-    <script>
-        // Get the modal
-        var modal = document.getElementById('id01');
+    <div class="txtb">
+      <input type="password">
+      <span data-placeholder="Password"></span>
+    </div>
 
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
+    <input type="submit" class="logbtn" value="Login">
+
+    <div class="bottom-text">
+      Don't have account? <a href="#">Sign up</a>
+    </div>
+  </form>
+
+  <script type="text/javascript">
+    // Creates the animaitons on Login form
+    $(".txtb input").on("focus", function () {
+      $(this).addClass("focus");
+    });
+
+    $(".txtb input").on("blur", function () {
+      if ($(this).val() == "")
+        $(this).removeClass("focus");
+    });
+  </script>
+
+
 </body>
 
 </html>
