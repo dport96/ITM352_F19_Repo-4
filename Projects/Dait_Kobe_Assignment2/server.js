@@ -19,6 +19,9 @@ app.use(express.static('./public'));
 app.post("/process_form", function (request, response) {
     process_quantity_form(request.body, response);
 });
+app.post("/login", function (request, response) {
+    login_form(request.body, response);
+});
 
 // Function used to check for valid quantities
 function isNonNegInt(q, returnErrors = false) {
@@ -29,7 +32,7 @@ function isNonNegInt(q, returnErrors = false) {
     return returnErrors ? errors : (errors.length == 0);
 }
 
-// Function to redirect to another page
+// Function to redirect to login page if true
 function process_quantity_form(POST, response) {
     if (typeof POST['purchase_submit_button'] != 'undefined') {
         // Check if the quantities are valid, if so, send to the invoice, if not, give an error
@@ -37,7 +40,7 @@ function process_quantity_form(POST, response) {
         for (i in products) {
             let q = POST[`quantity${i}`];
             if (isNonNegInt(q) == true) {
-                response.redirect('login_display.html'); // Redirects to Login page if it passes through function
+                response.redirect('login_display.html?' + qString); // Redirects to Login page if it passes through function
             } else {
                 response.redirect('products_display.html?' + qString); // Redirects back to products page if it fails
             }
@@ -45,10 +48,25 @@ function process_quantity_form(POST, response) {
     }
 }
 
+// Function to redirect to invoice page if true
+function login_form(POST, response) {
+    // Process login form POST and redirect to logged in page if ok, back to login page if not
+    console.log(request.body);
+    // Checks if username exists already USE FOR LOGIN CHECK
+    var qString = queryString.stringify(POST);
+    var the_username = request.body.username;
+    if (typeof reg_user_data[the_username] != 'undefined') {
+        if (reg_user_data[the_username].password == request.body.password) {
+            response.redirect('invoice_display.html?' + qString); // REDIRECT to Invoice HTML
+        } else {
+            response.redirect('login_display.html?' + qString); //REDIRECT to Login HTML
+        }
+    }
+}
+
 // Checks if JSON string already exists
 if (fs.existsSync(user_data)) {
     data = fs.readFileSync(user_data, 'utf-8');
-
     stats = fs.statSync(user_data)
 
     reg_user_data = JSON.parse(data); // Takes a string and converts it into object or array
@@ -64,21 +82,6 @@ if (fs.existsSync(user_data)) {
 } else {
     console.log(user_data + ' does not exist!');
 }
-
-// CHANGE to Login HTML
-app.post("/login", function (request, response) {
-    // Process login form POST and redirect to logged in page if ok, back to login page if not
-    console.log(request.body);
-    // Checks if username exists already USE FOR LOGIN CHECK
-    the_username = request.body.username;
-    if (typeof reg_user_data[the_username] != 'undefined') {
-        if (reg_user_data[the_username].password == request.body.password) {
-            response.redirect('./public/invoice_display.html'); // REDIRECT to Invoice HTML
-        } else {
-            response.redirect('./public/login_display.html?' + qString); //REDIRECT to Login HTML
-        }
-    }
-});
 
 
 
